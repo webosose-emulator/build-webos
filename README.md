@@ -3,7 +3,8 @@ build-webos
 
 Summary
 -------
-Build webOS OSE (Open Source Edition) images
+Build webOS OSE (Open Source Edition) images for qemux86 virtualbox.
+This was forked from original webosose upstream , https://github.com/webosose/build-webos.
 
 Description
 -----------
@@ -13,7 +14,7 @@ Cloning
 =======
 Set up build-webos by cloning its Git repository:
 
-     git clone https://github.com/webosose/build-webos.git
+     git clone https://github.com/webosose-emulator/build-webos.git
 
 Note: If you populate it by downloading an archive (zip or tar.gz file), then you will get the following error when you run mcf:
 
@@ -32,19 +33,16 @@ Also, the bitbake sanity check will issue a warning if you're not running under 
 
 Building
 ========
-To configure the build for the raspberrypi3 or qemux86 and to fetch the sources:
+To configure the build for the qemux86 virtualbox and to fetch the sources:
 
-    For raspberrypi3
-    $ ./mcf -p 0 -b 0 raspberrypi3
-
-    For qemux86
     $ ./mcf -p 0 -b 0 qemux86
 
 The `-p 0` and `-b 0` options set the make and bitbake parallelism values to the number of CPU cores found on your computer.
 
 To kick off a full build of webOS OSE, make sure you have at least 100GB of disk space available and enter the following:
 
-    $ make webos-image
+    $ make webos-image    --> This will fail right now
+    $ make mesa           --> This will succeeding
 
 This may take in the neighborhood of two hours on a multi-core workstation with a fast disk subsystem and lots of memory, or many more hours on a laptop with less memory and slower disks or in a VM.
 
@@ -89,7 +87,7 @@ Copyright and License Information
 =================================
 Unless otherwise specified, all content, including all source code files and documentation files in this repository are:
 
-Copyright (c) 2008-2018 LG Electronics, Inc.
+Copyright (c) 2008-2019 LG Electronics, Inc.
 
 All content, including all source code files and documentation files in this repository except otherwise noted are: Licensed under the Apache License, Version 2.0 (the "License"); you may not use this content except in compliance with the License. You may obtain a copy of the License at
 
