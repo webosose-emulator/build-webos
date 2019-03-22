@@ -41,11 +41,20 @@ The `-p 0` and `-b 0` options set the make and bitbake parallelism values to the
 
 To kick off a full build of webOS OSE, make sure you have at least 100GB of disk space available and enter the following:
 
-    $ make webos-image    --> This will fail right now
-    $ make mesa           --> This will succeeding
+    $ make webos-image
 
 This may take in the neighborhood of two hours on a multi-core workstation with a fast disk subsystem and lots of memory, or many more hours on a laptop with less memory and slower disks or in a VM.
 
+Running
+=======
+To run the emulator in virtualbox, follow the instructions:
+   - Install virtualbox in https://www.virtualbox.org
+   - After build, copy vmdk file to dist directory like
+     ~/build-webos$ cp BUILD/deploy/images/qemux86/webos-image-qemux86.vmdk dist/
+   - Start virtualbox and select File -> Import Appliance
+   - In the dialog select the ~/build-webos/dist/ose-virtualbox-github.ovf
+   - Follow the wizard
+   - After import you can start the emulator
 
 Images
 ======
