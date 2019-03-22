@@ -60,7 +60,7 @@ Machines = ['raspberrypi3','qemux86']
 webos_layers = [
 ('bitbake',                   -1, 'git://github.com/openembedded/bitbake.git',              'branch=1.32,commit=0193e1f', ''),
 
-('meta',                       5, 'git://github.com/webosose-emulator/openembedded-core.git',    'branch=morty-webos-emulator,commit=ee8ea05', 'oe-core'),
+('meta',                       5, 'git://github.com/webosose-emulator/openembedded-core.git',    'branch=morty-webos-emulator,commit=0acae0b', 'oe-core'),
 
 ('meta-oe',                   10, 'git://github.com/openembedded/meta-openembedded.git',    'branch=morty,commit=997caf9', 'meta-oe'),
 ('meta-multimedia',           11, 'git://github.com/openembedded/meta-openembedded.git',    '', 'meta-oe'),
@@ -76,7 +76,7 @@ webos_layers = [
 ('meta-webos-backports-2.6',  33, 'git://github.com/webosose-emulator/meta-webosose.git',            '', ''),
 
 ('meta-ros2',                 38, 'git://github.com/lgsvl/meta-ros2.git',                   'branch=ros2pr,commit=b92ab96',''),
-('meta-webos',                40, 'git://github.com/webosose-emulator/meta-webosose.git',            'branch=webos-emulator,commit=9f091f4', ''),
+('meta-webos',                40, 'git://github.com/webosose-emulator/meta-webosose.git',            'branch=webos-emulator,commit=0cda589', ''),
 
 ('meta-raspberrypi',          50, 'git://git.yoctoproject.org/meta-raspberrypi',            'branch=morty,commit=2a19226', ''),
 ('meta-webos-raspberrypi',    51, 'git://github.com/webosose-emulator/meta-webosose.git',            '', ''),
