@@ -96,6 +96,10 @@ Adding new layers
 =================
 The script automates the process of adding new OE layers to the build environment.  The information required for integrate new layer are; layer name, OE priority, repository, identification in the form branch, commit or tag ids. It is also possible to reference a layer from local storage area.  The details are documented in weboslayers.py.
 
+Known Issues
+============
+Audio is not working. 
+
 Copyright and License Information
 =================================
 Unless otherwise specified, all content, including all source code files and documentation files in this repository are:
