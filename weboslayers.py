@@ -62,7 +62,7 @@ webos_layers = [
 
 ('meta',                       5, 'git://github.com/openembedded/openembedded-core.git',    'branch=morty,commit=4b32784', 'oe-core'),
 
-('meta-oe',                   10, 'git://github.com/openembedded/meta-openembedded.git',    'branch=morty,commit=997caf9', 'meta-oe'),
+('meta-oe',                   10, 'git://github.com/webosose-emulator/meta-openembedded.git',    'branch=3dAccel,commit=54e2ff3', 'meta-oe'),
 ('meta-multimedia',           11, 'git://github.com/openembedded/meta-openembedded.git',    '', 'meta-oe'),
 ('meta-networking',           12, 'git://github.com/openembedded/meta-openembedded.git',    '', 'meta-oe'),
 ('meta-python',               13, 'git://github.com/openembedded/meta-openembedded.git',    '', 'meta-oe'),
@@ -70,16 +70,16 @@ webos_layers = [
 
 ('meta-qt5',                  20, 'git://github.com/meta-qt5/meta-qt5.git',                 'branch=krogoth,commit=dcfcb58', ''),
 
-('meta-webos-backports-2.3',  30, 'git://github.com/webosose/meta-webosose.git',            '', ''),
-('meta-webos-backports-2.4',  31, 'git://github.com/webosose/meta-webosose.git',            '', ''),
-('meta-webos-backports-2.5',  32, 'git://github.com/webosose/meta-webosose.git',            '', ''),
-('meta-webos-backports-2.6',  33, 'git://github.com/webosose/meta-webosose.git',            '', ''),
+('meta-webos-backports-2.3',  30, 'git://github.com/webosose-emulator/meta-webosose.git',            '', ''),
+('meta-webos-backports-2.4',  31, 'git://github.com/webosose-emulator/meta-webosose.git',            '', ''),
+('meta-webos-backports-2.5',  32, 'git://github.com/webosose-emulator/meta-webosose.git',            '', ''),
+('meta-webos-backports-2.6',  33, 'git://github.com/webosose-emulator/meta-webosose.git',            '', ''),
 
 ('meta-ros2',                 38, 'git://github.com/lgsvl/meta-ros2.git',                   'branch=ros2pr,commit=b92ab96',''),
-('meta-webos',                40, 'git://github.com/webosose/meta-webosose.git',            'branch=master,commit=b8dcca1', ''),
+('meta-webos',                40, 'git://github.com/webosose-emulator/meta-webosose.git',            'branch=3dAccel,commit=2c84f74', ''),
 
 ('meta-raspberrypi',          50, 'git://git.yoctoproject.org/meta-raspberrypi',            'branch=morty,commit=2a19226', ''),
-('meta-webos-raspberrypi',    51, 'git://github.com/webosose/meta-webosose.git',            '', ''),
+('meta-webos-raspberrypi',    51, 'git://github.com/webosose-emulator/meta-webosose.git',            '', ''),
 
-('meta-webos-ros2',           52, 'git://github.com/webosose/meta-webosose.git',            '', ''),
+('meta-webos-ros2',           52, 'git://github.com/webosose-emulator/meta-webosose.git',            '', ''),
 ]
