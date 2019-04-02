@@ -5,7 +5,7 @@
   </References>
   <DiskSection>
     <Info>List of the virtual disks used in the package</Info>
-    <Disk ovf:capacity="1540935680" ovf:diskId="vmdisk1" ovf:fileRef="file1" ovf:format="http://www.vmware.com/interfaces/specifications/vmdk.html#streamOptimized" vbox:uuid="ad51d97e-6dbd-297d-8297-b18b924da31b"/>
+    <Disk ovf:capacity="1540935680" ovf:diskId="vmdisk1" ovf:fileRef="file1" ovf:format="http://www.vmware.com/interfaces/specifications/vmdk.html#streamOptimized" vbox:uuid="7751d97e-6dbd-297d-8297-b18b924da31b"/>
   </DiskSection>
   <NetworkSection>
     <Info>Logical networks used in the package</Info>
@@ -162,7 +162,7 @@
       <StorageControllers>
         <StorageController name="IDE" type="PIIX4" PortCount="2" useHostIOCache="true" Bootable="true">
           <AttachedDevice type="HardDisk" port="0" device="0">
-            <Image uuid="{ad51d97e-6dbd-297d-8297-b18b924da31b}"/>
+            <Image uuid="{7751d97e-6dbd-297d-8297-b18b924da31b}"/>
           </AttachedDevice>
         </StorageController>
       </StorageControllers>
