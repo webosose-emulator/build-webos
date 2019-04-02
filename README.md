@@ -14,7 +14,7 @@ Cloning
 =======
 Set up build-webos by cloning its Git repository:
 
-     git clone https://github.com/webosose-emulator/build-webos.git
+     git clone https://github.com/webosose-emulator/build-webos.git -b 3dAccel
 
 Note: If you populate it by downloading an archive (zip or tar.gz file), then you will get the following error when you run mcf:
 
