@@ -124,7 +124,8 @@
           <Order position="3" device="None"/>
           <Order position="4" device="None"/>
         </Boot>
-        <Display VRAMSize="24"/>
+        <Display controller="VMSVGA" VRAMSize="128" accelerate3D="true"/>
+        <VideoCapture screens="1" file="." fps="25"/>
         <RemoteDisplay enabled="false"/>
         <BIOS>
           <IOAPIC enabled="true"/>
