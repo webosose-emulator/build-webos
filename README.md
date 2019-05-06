@@ -48,16 +48,18 @@ This may take in the neighborhood of two hours on a multi-core workstation with 
 Running
 =======
 To run the emulator in virtualbox, follow the instructions:
-   - Install virtualbox in https://www.virtualbox.org
+   - Install virtualbox 6.0 in https://www.virtualbox.org
    - After build, copy vmdk file to dist directory like
-     ~/build-webos$ cp BUILD/deploy/images/qemux86/webos-image-qemux86.vmdk dist/
+     
+    ~/build-webos$ cp BUILD/deploy/images/qemux86/webos-image-qemux86.vmdk dist/
+   
    - Start virtualbox and select File -> Import Appliance
    - In the dialog select the ~/build-webos/dist/ose-virtualbox-github.ovf
    - Follow the wizard
    - After import you can start the emulator
    
 If you rebuild emulator then please remove previous imported machine before importing newly build image
-   - Start virtualbox and select ose-virtualbox-github
+   - Start virtualbox and select ose-virtualbox-github-3dAccel
    - Choose remove with right mouse click and then select "Delete all files"
 
 Images
