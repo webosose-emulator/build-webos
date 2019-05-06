@@ -59,7 +59,7 @@ To run the emulator in virtualbox, follow the instructions:
    - After import you can start the emulator
    
 If you rebuild emulator then please remove previous imported machine before importing newly build image
-   - Start virtualbox and select ose-virtualbox-github-3dAccel
+   - Start virtualbox and select ose-virtualbox-github
    - Choose remove with right mouse click and then select "Delete all files"
 
 Images
