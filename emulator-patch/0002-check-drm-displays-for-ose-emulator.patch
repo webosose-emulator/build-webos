@@ -1,0 +1,108 @@
+From 4b600c746b033aedda4ef457db7a2d8332c20346 Mon Sep 17 00:00:00 2001
+From: Heegoo Han <heegoo.han@lge.com>
+Date: Mon, 21 Sep 2020 13:24:02 +0900
+Subject: [PATCH] check drm displays for ose emulator
+
+:Release Notes:
+Check drm display 2 is connected or disconnected
+
+:Detailed Notes:
+To get launcher and bareapp in secondary display,
+we need to check emulators drm display 2 is connected or disconnected.
+
+:Testing Performed:
+built this with Ubuntu 20.04 LTS.
+Boot with the output ose emulator on virtualbox,
+and then see secondary display shows launcher and bareapp.
+
+:QA Notes:
+
+:Issues Addressed:
+[PLAT-120740] CCC: bootd=r12
+[PLAT-120036]
+
+Change-Id: I9fde34b025174b933919c068f4908c76e11491ba
+Reviewed-on: http://gpro.lge.com/c/webos-pro/meta-lg-webos/+/286971
+Reviewed-by: Multi Layer Checker <multi_layer@lge.com>
+Reviewed-by: Kyungjik Min <dp.min@lge.com>
+Tested-by: Kyungjik Min <dp.min@lge.com>
+---
+ meta-webos/recipes-webos/bootd/bootd.bb       |  8 +++-
+ ...001-display-count-check-for-emulator.patch | 39 +++++++++++++++++++
+ 2 files changed, 46 insertions(+), 1 deletion(-)
+ create mode 100644 meta-webos/recipes-webos/bootd/bootd/0001-display-count-check-for-emulator.patch
+
+diff --git a/meta-webos/recipes-webos/bootd/bootd.bb b/meta-webos/recipes-webos/bootd/bootd.bb
+index b4bbb37a61..0d21a481da 100644
+--- a/meta-webos/recipes-webos/bootd/bootd.bb
++++ b/meta-webos/recipes-webos/bootd/bootd.bb
+@@ -12,7 +12,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=89aea4e17d99a7cacdbeed46a0096b10 \
+ DEPENDS = "luna-service2 libpbnjson pmloglib glib-2.0 boost gtest pmtrace"
+ 
+ WEBOS_VERSION = "2.0.0-13_7bdffe52b7f2d21b195d7df4ce11f17e644cae1d"
+-PR = "r11"
++PR = "r12"
+ 
+ inherit webos_component
+ inherit webos_enhanced_submissions
+@@ -29,6 +29,12 @@ inherit webos_prerelease_dep
+ SRC_URI = "${WEBOSOSE_GIT_REPO_COMPLETE}"
+ S = "${WORKDIR}/git"
+ 
++FILESEXTRAPATHS_prepend := "${THISDIR}/${BPN}:"
++
++SRC_URI_append_qemux86 = " \
++    file://0001-display-count-check-for-emulator.patch \
++"
++
+ # LTTNG option
+ # WEBOS_LTTNG_ENABLED = "0"
+ EXTRA_OECMAKE += " ${@bb.utils.contains('WEBOS_LTTNG_ENABLED', '1', '-DWEBOS_LTTNG_ENABLED:BOOLEAN=True', '', d)}"
+diff --git a/meta-webos/recipes-webos/bootd/bootd/0001-display-count-check-for-emulator.patch b/meta-webos/recipes-webos/bootd/bootd/0001-display-count-check-for-emulator.patch
+new file mode 100644
+index 0000000000..d3dcd344c1
+--- /dev/null
++++ b/meta-webos/recipes-webos/bootd/bootd/0001-display-count-check-for-emulator.patch
+@@ -0,0 +1,39 @@
++From 82df7303fc7421fb4c5372c1b6f82cf1ddbfb555 Mon Sep 17 00:00:00 2001
++From: Heegoo Han <heegoo.han@lge.com>
++Date: Wed, 16 Sep 2020 13:13:23 +0900
++Subject: [PATCH] display count check for emulator
++
++---
++ src/bootd/event/StaticEventDB.cpp | 16 ++++++++++++----
++ 1 file changed, 12 insertions(+), 4 deletions(-)
++
++diff --git a/src/bootd/event/StaticEventDB.cpp b/src/bootd/event/StaticEventDB.cpp
++index 80aca92..2210669 100644
++--- a/src/bootd/event/StaticEventDB.cpp
+++++ b/src/bootd/event/StaticEventDB.cpp
++@@ -61,10 +61,18 @@ void StaticEventDB::printInformation()
++ 
++ int StaticEventDB::getDisplayCnt()
++ {
++-    if (isFileExist("/sys/class/drm/card0-HDMI-A-2"))
++-        return 2;
++-    else
++-        return 1;
+++    // Emulator should check the card0-Virtual-*
+++    ifstream file;
+++    string status;
+++    file.open("/sys/class/drm/card0-Virtual-2/status");
+++    if (!file.fail()) {
+++        status.assign(std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>());
+++        file.close();
+++        if (std::string::npos != status.find("disconnected")) {
+++            return 1;
+++        }
+++    }
+++    return 2;
++ }
++ 
++ void StaticEventDB::updateConf(pbnjson::JValue jsonConf)
++-- 
++2.25.1
++
+-- 
+2.25.1
+

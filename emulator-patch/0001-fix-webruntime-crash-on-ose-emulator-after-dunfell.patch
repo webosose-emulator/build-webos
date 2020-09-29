@@ -1,0 +1,56 @@
+From a6851a727cd044de110b4fd6a12f7b0d946be04d Mon Sep 17 00:00:00 2001
+From: Heegoo Han <heegoo.han@lge.com>
+Date: Fri, 4 Sep 2020 12:25:23 +0700
+Subject: [PATCH] fix webruntime crash on ose emulator after dunfell
+
+:Release Notes:
+Fix build & boot error in ose emulator after Dunfell upgrade
+
+:Detailed Notes:
+After Dunfell upgrade, webOS OSE Emulator does not boot properly.
+The reason is that the binaries of webruntime and v8,
+built in current host PC environment(Ubuntu 18.04)
+are not compatible with x86 32-bit target machine, ose emulator.
+So this should be built on Ubuntu 20.04 LTS host.
+
+:Testing Performed:
+built this with Ubuntu 20.04 LTS.
+Boot with the output ose emulator on virtualbox,
+and then see boot is OK.
+
+:QA Notes:
+
+:Issues Addressed:
+[PLAT-117256] OSE Emulator does not boot properly
+[PLAT-78282] mksnapshot from webruntime fails to run when host and target have different glibc version
+
+Change-Id: I870467a52ba07161d91d0fd03460971fa612aa3a
+---
+ meta-webos/recipes-webos/chromium/webruntime.inc | 11 -----------
+ 1 file changed, 11 deletions(-)
+
+diff --git a/meta-webos/recipes-webos/chromium/webruntime.inc b/meta-webos/recipes-webos/chromium/webruntime.inc
+index b1420691..7ba57770 100644
+--- a/meta-webos/recipes-webos/chromium/webruntime.inc
++++ b/meta-webos/recipes-webos/chromium/webruntime.inc
+@@ -357,17 +357,6 @@ MKSNAPSHOT_PATH_arm = "clang_x86_v8_arm/"
+ MKSNAPSHOT_PATH_aarch64 = "clang_x64_v8_arm64/"
+ LTTNG_PROVIDER = "liblttng_provider.so"
+ 
+-MKSNAPSHOT_PATH_qemux86 = "host/"
+-
+-GN_ARGS_append_qemux86 = "\
+-    is_host_clang=false\
+-    v8_snapshot_toolchain=\"//build/toolchain/cros:host\" \
+-    host_toolchain=\"//build/toolchain/cros:host\" \
+-    use_custom_libcxx=false \
+-    use_custom_libcxx_for_host=false \
+-    v8_enable_embedded_builtins=false \
+-"
+-
+ install_webruntime() {
+     install -d ${D}${libdir}
+     install -d ${D}${includedir}/${BPN}
+-- 
+2.25.1
+

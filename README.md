@@ -3,11 +3,16 @@ build-webos
 
 Summary
 -------
-Build webOS OSE (Open Source Edition) images
+Build webOS OSE (Open Source Edition) images for Emulator, qemux86 virtualbox.
+This was forked from original webosose upstream , https://github.com/webosose/build-webos.
 
 Description
 -----------
 This repository contains the top level code that aggregates the various [OpenEmbedded](http://openembedded.org) layers into a whole from which webOS OSE images can be built.
+
+Host PC Requirement
+=======
+For building webOS Emulator OSE 2.7.0, you need Ubuntu 20.04 64bit LTS.
 
 Cloning
 =======
@@ -29,15 +34,23 @@ Before you can build, you will need some tools.  If you try to build without the
     $ sudo scripts/prerequisites.sh
 
 Also, the bitbake sanity check will issue a warning if you're not running under Ubuntu 18.04 64bit LTS.
+But please ignore the warning, we need Ubuntu 20.04 64bit LTS for Emulator.
 
 
 Building
 ========
 To configure the build for the raspberrypi4 and to fetch the sources:
 
-    $ ./mcf -p 0 -b 0 raspberrypi4
+    $ ./mcf -p 0 -b 0 qemux86
 
 The `-p 0` and `-b 0` options set the make and bitbake parallelism values to the number of CPU cores found on your computer.
+
+We need the following two patches for Emulator, please do patch as:
+
+    $ cd meta-webosose
+    $ git am --reject --whitespace=fix ../emulator-patch/0001-fix-webruntime-crash-on-ose-emulator-after-dunfell.patch
+    $ git am --reject --whitespace=fix ../emulator-patch/0002-check-drm-displays-for-ose-emulator.patch
+    $ cd ..
 
 To kick off a full build of webOS OSE, make sure you have at least 100GB of disk space available and enter the following:
 
