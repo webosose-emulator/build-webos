@@ -45,6 +45,8 @@ To configure the build for the raspberrypi4 and to fetch the sources:
 
 The `-p 0` and `-b 0` options set the make and bitbake parallelism values to the number of CPU cores found on your computer.
 
+> If you assign too high values to '-p' and '-b' options, it might cause unexpected build errors when you execute the 'make' command. In that case, use lower values for the options (which are higher or equal to 1.)
+
 We need the following two patches for Emulator, please do patch as:
 
     $ cd meta-webosose
