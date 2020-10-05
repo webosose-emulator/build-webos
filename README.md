@@ -41,7 +41,7 @@ Building
 ========
 To configure the build for the raspberrypi4 and to fetch the sources:
 
-    $ ./mcf -p 0 -b 0 qemux86
+    $ ./mcf -p 8 -b 8 qemux86
 
 The `-p 0` and `-b 0` options set the make and bitbake parallelism values to the number of CPU cores found on your computer.
 
