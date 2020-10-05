@@ -45,6 +45,8 @@ To configure the build for the raspberrypi4 and to fetch the sources:
 
 The `-p 0` and `-b 0` options set the make and bitbake parallelism values to the number of CPU cores found on your computer.
 
+> If you assign too high values to '-p' and '-b' options, it might cause unexpected build errors when you execute the 'make' command. In that case, use lower values for the options (which are higher or equal to 1.)
+
 We need the following two patches for Emulator, please do patch as:
 
     $ cd meta-webosose
@@ -58,7 +60,7 @@ To kick off a full build of webOS OSE, make sure you have at least 100GB of disk
 
 This may take in the neighborhood of two hours on a multi-core workstation with a fast disk subsystem and lots of memory, or many more hours on a laptop with less memory and slower disks or in a VM.
 
-If you need more information about the build, please see the build guide on the webOS OSE website(webosose.org).
+If you need more information about the build, please see the build guide on the [webOS OSE website](https://www.webosose.org/docs/guides/setup/building-webos-ose/).
 
 Images
 ======
