@@ -60,7 +60,7 @@ To kick off a full build of webOS OSE, make sure you have at least 100GB of disk
 
 This may take in the neighborhood of two hours on a multi-core workstation with a fast disk subsystem and lots of memory, or many more hours on a laptop with less memory and slower disks or in a VM.
 
-If you need more information about the build, please see the build guide on the webOS OSE website(webosose.org).
+If you need more information about the build, please see the build guide on the [webOS OSE website](https://www.webosose.org/docs/guides/setup/building-webos-ose/).
 
 Images
 ======
