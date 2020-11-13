@@ -47,11 +47,10 @@ The `-p 0` and `-b 0` options set the make and bitbake parallelism values to the
 
 > If you assign too high values to '-p' and '-b' options, it might cause unexpected build errors when you execute the 'make' command. In that case, use lower values for the options (which are higher or equal to 1.)
 
-We need the following two patches for Emulator, please do patch as:
+We need the following patche for Emulator, please do patch as:
 
     $ cd meta-webosose
     $ git am --reject --whitespace=fix ../emulator-patch/0001-fix-webruntime-crash-on-ose-emulator-after-dunfell.patch
-    $ git am --reject --whitespace=fix ../emulator-patch/0002-check-drm-displays-for-ose-emulator.patch
     $ cd ..
 
 To kick off a full build of webOS OSE, make sure you have at least 100GB of disk space available and enter the following:
