@@ -12,7 +12,7 @@ This repository contains the top level code that aggregates the various [OpenEmb
 
 Host PC Requirement
 =======
-For building webOS Emulator OSE 2.7.0, you need Ubuntu 20.04 64bit LTS.
+For building webOS Emulator OSE 2.7.0, you need Ubuntu 20.04 64bit LTS with Linux version 5.4.0-52.
 
 Cloning
 =======
